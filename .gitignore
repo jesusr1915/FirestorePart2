@@ -4,9 +4,6 @@ npm-debug.*
 .idea/workspace.xml
 .idea/*
 
-
-
-
 # OS Generated files #
 ######################
 .DS_Store

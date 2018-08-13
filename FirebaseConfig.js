@@ -1,4 +1,3 @@
-
 export const config = {
 
     apiKey: "AIzaSyC0xu6-SHZSJOf26VnKc-MkmQvz54DA9x8",

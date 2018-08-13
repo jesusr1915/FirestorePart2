@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import * as firebase from 'firebase';
 import 'firebase/firestore';
 import { config, settings } from "./FirebaseConfig";
@@ -18,14 +18,23 @@ export default class App extends React.Component {
 
     this._getRealTimeData();
     this._getNormalData();
-
-
   }
+
 
   render() {
     return (
       <View style={styles.container}>
         <Text>Firestore</Text>
+
+          <TouchableOpacity style={{width:200, height:50, backgroundColor:'gray', marginTop:50, justifyContent:'center',
+                                    alignItems:'center'}}
+                            onPress={() => {this._editData()}}>
+
+              <Text style={{color:'white', fontSize:16}}>Edit Data</Text>
+
+          </TouchableOpacity>
+
+
       </View>
     );
   }
@@ -68,7 +77,72 @@ export default class App extends React.Component {
         });
 
 
+    };
+
+    _editData = () => {
+
+        /*const docData = {
+            stringExample: "Hello world!",
+            booleanExample: true,
+            numberExample: 3.14159265,
+            dateExample: new Date("December 10, 1815"),
+            arrayExample: [5, true, "hello"],
+            nullExample: null,
+            objectExample: {
+                a: 5,
+                b: {
+                    nested: "foo"
+                }
+            }
+        };*/
+
+        /*firestore.collection("cities").doc("LA").set({
+
+            name: "Los Angeles",
+            state: "CA",
+            country: "USA"
+
+        })
+
+            .then( () => {
+                console.log("Document successfully written!");
+            })
+            .catch( err => {
+                console.error("Error writing document: ", err);
+            });*/
+
+
+        /*firestore.collection("cities").add({
+
+            name: "Tokyo",
+            country: "Japan"
+
+        })
+            .then( docRef => {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch( err => {
+                console.error("Error adding document: ", err);
+            });*/
+
+
+        firestore.collection("cities").doc("LA").update({
+
+            population:99999
+
+        })
+
+            .then( () => {
+                console.log("Document successfully written!");
+            })
+            .catch( err => {
+                console.error("Error writing document: ", err);
+            });
+
     }
+
+
+
 
 }//class
 
